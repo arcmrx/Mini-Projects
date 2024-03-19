@@ -4,17 +4,17 @@
 void print_array(std::vector<std::vector<char>> Field)
 {
     std::cout << "\x1B[2J\x1B[H";
-    std::cout << "╔═══════════════╗\n";
-    std::cout << "║Крестики-нолики║\n";
-    std::cout << "╠═══╦═══╦═══╦═══╣\n";
-    std::cout << "║ 0 ║ 1 ║ 2 ║ 3 ║\n";
-    std::cout << "╠═══╬═══╬═══╬═══╣\n";
-    std::cout << "║ 1 ║ " << Field[0][0] << " ║ " << Field[0][1] << " ║ " << Field[0][2] << " ║\n";
-    std::cout << "╠═══╬═══╬═══╬═══╣\n";
-    std::cout << "║ 2 ║ " << Field[1][0] << " ║ " << Field[1][1] << " ║ " << Field[1][2] << " ║\n";
-    std::cout << "╠═══╬═══╬═══╬═══╣\n";
-    std::cout << "║ 3 ║ " << Field[2][0] << " ║ " << Field[2][1] << " ║ " << Field[2][2] << " ║\n";
-    std::cout << "╚═══╩═══╩═══╩═══╝\n";
+    std::cout << "╔═════════════════╗\n";
+    std::cout << "║ Крестики-нолики ║\n";
+    std::cout << "╚╦═══╦═══╦═══╦═══╦╝\n";
+    std::cout << " ║ 0 ║ 1 ║ 2 ║ 3 ║\n";
+    std::cout << " ╠═══╬═══╬═══╬═══╣\n";
+    std::cout << " ║ 1 ║ " << Field[0][0] << " ║ " << Field[0][1] << " ║ " << Field[0][2] << " ║\n";
+    std::cout << " ╠═══╬═══╬═══╬═══╣\n";
+    std::cout << " ║ 2 ║ " << Field[1][0] << " ║ " << Field[1][1] << " ║ " << Field[1][2] << " ║\n";
+    std::cout << " ╠═══╬═══╬═══╬═══╣\n";
+    std::cout << " ║ 3 ║ " << Field[2][0] << " ║ " << Field[2][1] << " ║ " << Field[2][2] << " ║\n";
+    std::cout << " ╚═══╩═══╩═══╩═══╝\n";
 }
 
 bool isValidMove(int x, int y, std::vector<std::vector<char>> Field)
