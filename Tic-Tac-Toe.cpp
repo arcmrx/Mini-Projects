@@ -4,17 +4,17 @@
 void print_array(std::vector<std::vector<char>> Field)
 {
     std::cout << "\x1B[2J\x1B[H";
-    std::cout << "-----------------\n";
-    std::cout << "|Крестики-нолики|\n";
-    std::cout << "-----------------\n";
-    std::cout << " 0 | 1 | 2 | 3 |\n";
-    std::cout << "–––+–––+–––+–––+\n";
-    std::cout << " 1 | " << Field[0][0] << " | " << Field[0][1] << " | " << Field[0][2] << " |\n";
-    std::cout << "–––+–––+–––+–––+\n";
-    std::cout << " 2 | " << Field[1][0] << " | " << Field[1][1] << " | " << Field[1][2] << " |\n";
-    std::cout << "–––+–––+–––+–––+\n";
-    std::cout << " 3 | " << Field[2][0] << " | " << Field[2][1] << " | " << Field[2][2] << " |\n";
-    std::cout << "–––+–––+–––+–––+\n";
+    std::cout << "╔═══════════════╗\n";
+    std::cout << "║Крестики-нолики║\n";
+    std::cout << "╠═══╦═══╦═══╦═══╣\n";
+    std::cout << "║ 0 ║ 1 ║ 2 ║ 3 ║\n";
+    std::cout << "╠═══╬═══╬═══╬═══╣\n";
+    std::cout << "║ 1 ║ " << Field[0][0] << " ║ " << Field[0][1] << " ║ " << Field[0][2] << " ║\n";
+    std::cout << "╠═══╬═══╬═══╬═══╣\n";
+    std::cout << "║ 2 ║ " << Field[1][0] << " ║ " << Field[1][1] << " ║ " << Field[1][2] << " ║\n";
+    std::cout << "╠═══╬═══╬═══╬═══╣\n";
+    std::cout << "║ 3 ║ " << Field[2][0] << " ║ " << Field[2][1] << " ║ " << Field[2][2] << " ║\n";
+    std::cout << "╚═══╩═══╩═══╩═══╝\n";
 }
 
 bool isValidMove(int x, int y, std::vector<std::vector<char>> Field)
@@ -33,7 +33,7 @@ void moveX(std::vector<std::vector<char>> &Field)
 {
     std::cout << "Ход X! Введите координаты:\n";
     int x, y;
-    while (!(std::cin >> y >> x) || !isValidMove(x, y, Field))
+    while (!(std::cin >> x >> y) || !isValidMove(x, y, Field))
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -50,7 +50,7 @@ void moveO(std::vector<std::vector<char>> &Field)
 {
     std::cout << "Ход 0! Введите координаты:\n";
     int x, y;
-    while (!(std::cin >> y >> x) || !isValidMove(x, y, Field))
+    while (!(std::cin >> x >> y) || !isValidMove(x, y, Field))
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -71,14 +71,14 @@ bool checkWin(std::vector<std::vector<char>> &Field)
             (Field[0][i] == 'X' && Field[0][i] == Field[1][i] && Field[1][i] == Field[2][i]))
         {
             print_array(Field);
-            std::cout << "\x1b[1;32mИгрок X выиграл!\x1b[0m\n";
+            std::cout << "\n\x1b[1;32m╔══════════════════╗\n║ Игрок X выиграл! ║\n╚══════════════════╝\n\x1b[0m\n";
             return false;
         }
         else if ((Field[i][0] == '0' && Field[i][0] == Field[i][1] && Field[i][1] == Field[i][2]) ||
                  (Field[0][i] == '0' && Field[0][i] == Field[1][i] && Field[1][i] == Field[2][i]))
         {
             print_array(Field);
-            std::cout << "\x1b[1;32mИгрок 0 выиграл!\x1b[0m\n";
+            std::cout << "\n\x1b[1;32m╔══════════════════╗\n║ Игрок 0 выиграл! ║\n╚══════════════════╝\n\x1b[0m\n";
             return false;
         }
     }
@@ -87,14 +87,14 @@ bool checkWin(std::vector<std::vector<char>> &Field)
         (Field[2][0] == 'X' && Field[1][1] == 'X' && Field[0][2] == 'X'))
     {
         print_array(Field);
-        std::cout << "\x1b[1;32mИгрок X выиграл!\x1b[0m\n";
+        std::cout << "\n\x1b[1;32m╔══════════════════╗\n║ Игрок X выиграл! ║\n╚══════════════════╝\n\x1b[0m\n";
         return false;
     }
     else if ((Field[0][0] == '0' && Field[1][1] == '0' && Field[2][2] == '0') ||
              (Field[2][0] == '0' && Field[1][1] == '0' && Field[0][2] == '0'))
     {
         print_array(Field);
-        std::cout << "\x1b[1;32mИгрок 0 выиграл!\x1b[0m\n";
+        std::cout << "\n\x1b[1;32m╔══════════════════╗\n║ Игрок 0 выиграл! ║\n╚══════════════════╝\n\x1b[0m\n";
         return false;
     }
 
@@ -117,7 +117,7 @@ bool checkWin(std::vector<std::vector<char>> &Field)
     if (isDraw)
     {
         print_array(Field);
-        std::cout << "\x1b[1;32mНичья!\x1b[0m\n";
+        std::cout << "\n\x1b[1;33m╔════════╗\n║ Ничья! ║\n╚════════╝\x1b[0m\n";
         return false;
     }
 
